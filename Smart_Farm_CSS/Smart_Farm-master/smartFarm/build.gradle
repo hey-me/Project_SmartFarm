@@ -1,0 +1,44 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.7'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.3smartFarm'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'mysql:mysql-connector-java'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket' //웹 소켓
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16' /* Log4JDBC */
+	implementation 'org.codehaus.jackson:jackson-core-asl:1.1.0'
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+	
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	compileOnly 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok'  //컴파일 및 실행할 때 써주세요의 의미정도?
+	annotationProcessor('org.projectlombok:lombok')  //에노테이션을 쓸 때 롬북도 봐라의 의미정도?
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

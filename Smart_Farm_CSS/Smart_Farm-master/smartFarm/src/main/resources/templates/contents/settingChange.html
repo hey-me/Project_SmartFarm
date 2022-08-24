@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<link th:href="@{/css/smartFarm.css}" rel="stylesheet" />
+<script type="text/javascript" th:src="@{/js/arduino.js}"></script>
+<body>
+	<div id="wrapper">
+		<div id="main">
+			<div class="main">
+				<div class="inner">
+					<form class="setting">
+						<table class="settingTable">
+							<th>LED</th>
+							<th>PAN</th>
+							<th>PUMP1</th>
+							<th>PUMP2</th>
+							<th>PUMP3</th>
+							<th>DOOR</th>
+							<tr>
+								<td><input type="button" id="ledOn" onclick="ArduinoControl('ledOn')" value="켜기"></td>
+								<td><input type="button" id="allOn" onclick="ArduinoControl('fanOn')" value="팬켜기"></td>
+								<td><input type="button" id="allOn" onclick="ArduinoControl('pump1On')" value="펌프1켜기"></td>
+								<td><input type="button" id="allOn" onclick="ArduinoControl('pump2On')" value="펌프2켜기"></td>
+								<td><input type="button" id="allOn" onclick="ArduinoControl('pump3On')" value="펌프3켜기"></td>
+								<td><input type="button" id="doorOpen" onclick="ArduinoControl('doorOpen')" value="문열기"></td>
+							</tr>
+							<tr>
+								<td><input type="button" id="ledOff" onclick="ArduinoControl('ledOff')" value="끄기"></td>
+								<td><input type="button" id="allOff" onclick="ArduinoControl('fanOff')" value="팬끄기"></td>
+								<td><input type="button" id="allOff" onclick="ArduinoControl('pump1Off')" value="펌프1끄기"></td>
+								<td><input type="button" id="allOff" onclick="ArduinoControl('pump2Off')" value="펌프2끄기"></td>
+								<td><input type="button" id="allOff" onclick="ArduinoControl('pump3Off')" value="펌프3끄기"></td>
+								<td><input type="button" id="doorOpen" onclick="ArduinoControl('doorClose')" value="문잠그기"></td>
+							</tr>
+						</table>
+						<table class="settingTimeTable">
+							<th>펌프1 셋팅</th>
+							<th>펌프2 셋팅</th>
+							<th>펌프3 셋팅</th>
+							<th>led 셋팅</th>
+							<tr>
+								<td> <input type="number" id="Interrupt1"/></td>
+								<td><input type="number" id="Interrupt2"/></td>
+								<td><input type="number" id="Interrupt3"/></td>
+
+								<td>시작시간<input type="time" id="ledOnTime"/><br>종료시간<input type="time" id="ledOffTime"/>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="button" id="changeTransmitDataInterrupt1" onclick="ArduinoControl('pumpSetting1')" value="전송 세팅값 변경"></td>
+								<td><input type="button" id="changeTransmitDataInterrupt2" onclick="ArduinoControl('pumpSetting2')" value="전송 세팅값 변경"></td>
+								<td><input type="button" id="changeTransmitDataInterrupt3" onclick="ArduinoControl('pumpSetting3')" value="전송 세팅값 변경"></td>
+								<td><input type="button" id="changeSetting" onclick="ArduinoControl('changeLedSetting')" value="led세팅값 변경"></td>
+							</tr>
+						</table>
+					
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+<script  th:inline="javascript">
+
+function ArduinoControl(action){
+   var smartFarmVo=[[${SmartFarmVo}]];
+   var ipAddress= "ws://"+[[${SmartFarmVo.ipAddress}]]+":80";
+    if("WebSocket" in window){//브라우저가 지원하는지 체크후
+        //웹소켓을 열고
+        var ws = new WebSocket(ipAddress);
+        ws.onopen = function(){
+           
+           if(action== "changeLedSetting"){
+              ws.send(action+"/"+$("#ledOnTime").val()+"/"+$("#ledOffTime").val());
+
+           }else if(action.indexOf("pumpSetting")>=0){
+              if(action.charAt(action.length-1)=='1'){
+                 ws.send(action+"/"+$("#Interrupt1").val());
+              }else if(action.charAt(action.length-1)=='2'){
+                 ws.send(action+"/"+$("#Interrupt2").val());
+              }else if(action.charAt(action.length-1)=='3'){
+                 ws.send(action+"/"+$("#Interrupt3").val());
+              }
+              
+
+           }else
+           ws.send(action);
+  
+        };
+        ws.onmessage = function(evt){
+        	Swal.fire({
+        		  position: 'top-end',
+        		  icon: 'success',
+        		  title: evt.data,
+        		  showConfirmButton: false,
+        		  timer: 1000
+        		})
+        		
+         
+            ws.close();
+        };
+        ws.onclose = function(){
+        };
+    } else {
+        alert("웹소켓을 지원하지 않는 브라우저입니다.");
+    }
+}
+
+</script>
+
+
+</html>

@@ -1,0 +1,354 @@
+/* 첫번째 */
+.firstAll {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+h1 {
+	text-align: center;
+}
+
+table.firsttable {
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	border-collapse: separate;
+	border-spacing: 5px;
+	text-align: center;
+	line-height: 7;
+	border-top: 1px solid #ccc;
+	margin: 20px 10px;
+	border-collapse: separate;
+	background: #00ff00;
+}
+
+table.firsttable th {
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	font-size: 15px;
+	text-align: center;
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	background: #efefef;
+}
+
+table.firsttable td {
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	background: #efefef;
+	border-bottom: 1px solid #ccc;
+}
+
+/* 두번째 */
+.secondtiles {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.secondtable {
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	border-collapse: separate;
+	border-spacing: 5px;
+	text-align: center;
+	line-height: 7;
+	border-top: 1px solid #ccc;
+	margin: 20px 10px;
+	border-collapse: separate;
+	background: #00ff00;
+	text-align: center;
+}
+
+.secondtable th {
+	text-align: center;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	font-size: 15px;
+	text-align: center;
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	background: #efefef;
+}
+
+.secondtable td {
+	cursor: pointer;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	background: #efefef;
+	border-bottom: 1px solid #ccc;
+}
+
+/* 세번째 */
+* {
+	box-sizing: border-box
+}
+
+/* 슬라이드쇼 컨테이너의 디자인 */
+.slideshow-container {
+	max-width: 100%;
+	position: relative;
+}
+
+/* 이미지를 숨기는데 사용 */
+.mySlides {
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+
+.numbertext {
+	position: absolute;
+}
+/* 다음, 이전 버튼 */
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* "다음 버튼"을 오른쪽에 위치 */
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+/* 캡션 부분 */
+.text {
+	color: #f2f2f2;
+	font-size: 15px;
+	padding: 8px 12px;
+	position: absolute;
+	bottom: 8px;
+	width: 100%;
+	text-align: center;
+}
+
+/* 숫자 부분 위에 적은 (1/3) <-- 이런거 */
+.numbertext {
+	color: #f2f2f2;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
+}
+
+/* 하단의 점들 */
+.dot {
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+	background-color: #717171;
+}
+
+/* 페이드 효과 */
+.zoom {
+	-webkit-animation-name: zoom;
+	-webkit-animation-duration: 0.6s;
+	animation-name: zoom;
+	animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {	from {-webkit-transform: scale(0)}
+
+to {-webkit-transform: scale(1)}
+
+}
+@keyframes zoom {
+	from {transform: scale(0)}
+
+to {
+	transform: scale(1)
+}}
+
+/* monitoring */
+.chartBox{
+	width:1000px; 
+	height: 550px; 
+	margin-left:auto; 
+	margin-right:auto;
+	border-top: hidden;
+	border-bottom: hidden;
+	font-family: 'Dongle';
+	
+}
+.chartBox th{
+	text-align:cetner;
+	align-content:center;
+	width: 50%;
+	height: 50%;
+	background-color: white;
+}
+.chartBox tr{
+	align-content:center;
+	width: 50%;
+	height: 50%;
+	}
+.shamebox1{
+	width: 50%; 
+	height: 100%; 
+	margin-left:auto; 
+	margin-right:auto; 
+	float:left; 
+	padding:25px;
+	position: relative;
+}
+.tempCharDiv{
+	width:100%;
+	height: 50%;
+}
+.tableLine{
+	border-right:1px solid #c9c9c9; 
+}
+.tdLine{
+	border-right:1px solid #c9c9c9; 
+}
+/* 문열림 닫힘 Table */
+.doorTableDiv{
+	text-align:center;
+	font-size:25px;
+	width: 100%;
+	height: 50%;
+	align-content: center;
+    display: inline-block;
+    margin-bottom: 10%;
+}
+.doorTable{
+	height:100%;
+	width: 100%;
+}
+.doorTbody th{
+	text-align: center;
+	 
+}
+.doorTable{
+	background-color: rgb(204,233,249);
+}
+.doorTable th{
+	margin-top:10%;
+	padding:20px;
+}
+.dateDiv{
+	text-align: center;
+	padding:7px;
+	font-family: 'Dongle';
+	font-size: 25px;
+}
+
+/* explanation */
+.summaryDiv{
+	font-family: 'Dongle';
+	align-content:center;
+	text-align: center;
+	
+}
+.summaryH1{
+	font-size: 60px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.035em;
+}
+.summaryBox{
+	display:inline-block;
+	padding:20px;
+	border-radius: 30px;
+	font-size:35px;
+	background-color:rgb(201,201,201);
+	width: 70%;
+	height: 50%;
+}
+
+.myChart{
+	
+	text-align:center;
+	align-content: center;
+}
+
+.sirclechartBox{
+	margin-top:10%;
+	width: 100%;
+	height: 100%;
+}
+
+.lsuChart{
+	display:inline-block;
+	width: 33%;
+	height: 300px;
+}
+.hmChart{
+	display:inline-block;
+	width: 33%;
+	height: 300px;
+}
+.hkjChart{
+	display:inline-block;
+	width: 33%;
+	height: 300px;
+}
+
+/* settingChangeHTML */
+
+.settingTable{
+	border-radius:50%;
+	margin:auto;
+	width: 70%;
+	font-family: 'Dongle';
+	font-size:20px;
+}
+
+.settingTable th{
+	margin:auto;
+	text-align:center;
+	background-color: cornflowerblue;
+}
+.settingTimeTable{
+	align-content:center;
+	font-family: 'Dongle';
+	margin:auto;
+	width: 70%;
+	font-size:20px;
+}
+.settingTimeTable th{
+	text-align:center;
+	background-color: cornflowerblue;
+	
+}

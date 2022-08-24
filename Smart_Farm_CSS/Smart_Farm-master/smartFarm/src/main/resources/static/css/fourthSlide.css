@@ -1,0 +1,36 @@
+.intro-wrap {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.bgwrap {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.intro-wrap>.bgwrap>div {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	text-align: center;
+}
+
+.intro-wrap>.bgwrap>div>img {
+	max-height:unset;
+	max-width:unset;
+	width: 100%;
+	height: 100%;
+	object-fit:cover;
+}
+
+/*  */

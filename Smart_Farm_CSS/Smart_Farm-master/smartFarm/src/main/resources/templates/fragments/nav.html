@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<script>
+	$(document).ready(function() {
+
+		$('[data-toggle="modal"]').tooltip();
+
+	});
+</script>
+<nav th:fragment="fragment-nav" id="menu">
+	<h2>Menu</h2>
+	<label th:if="${session.user ne null}">
+	 [[${session.user.userVo.user_name}]] 님 환영합니다
+	</label>
+	<ul>
+		<li><a th:href="@{/home}">메인 페이지</a></li>
+		<li><a th:href="@{/mo}">모니터링</a></li>
+		<li><a th:href="@{#}">설정</a></li>
+		<li><a th:href="@{#}">안내</a></li>
+		<li><a th:href="@{#}">개발진</a></li>
+		
+		<li th:if="${session.user eq null}"><a th:href="@{#}" id="loginTeg"> 로그인</a></li>
+		<li th:if="${session.user ne null}"><a th:href="@{logoutProc}"> 로그아웃</a></li>
+		<!-- <a class="nav-link dropdown-toggle" data-bs-toggle="modal" data-bs-target="#loginModal" role="button" aria-haspopup="true" aria-expanded="false">
+					<span class="mr-2 d-none d-lg-inline text-gray-600 small">로그인 </span>
+				</a> -->
+
+	</ul>
+	<script type="text/javascript">
+		$("#loginTeg").click(function() {
+			$("#loginButton").trigger("click");
+		})
+	</script>
+</nav>
+
+</html>

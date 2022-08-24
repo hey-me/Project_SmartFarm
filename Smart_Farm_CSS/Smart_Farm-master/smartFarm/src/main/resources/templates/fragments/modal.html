@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<link th:href="@{/css/bodys.css}" rel="stylesheet">
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
+
+<div class="modal" id="modal">
+	<div class="modal_content">
+		 <form th:action="@{/loginProc}" method="post" id="loginForm">
+			<article class="modalTop">
+				<div class="symbole2">
+					<img class="symboleimg" src="images/logo_white.png" alt="">
+				</div>
+				<div class="closeButton">
+					<a href="javascript:;" class="close">X</a>
+				</div>
+			</article>
+			<div class="modal_header">
+				<div class="login_input">
+					<label class="modal_title">아이디</label>
+					<input type="text" id="user_id" name="user_id" placeholder="아이디">
+					<label class="modal_title">비밀번호</label>
+					<input type="password" id="user_password" name="user_password" placeholder="비밀번호">
+					
+				
+				</div>
+
+				<div class="footerChecked">
+					
+					<input type="checkbox" id="userID" name="user" value="id" checked>
+					<label for="userID">아이디 유지</label>
+					<input type="checkbox" class="form-check-input" id="rememberMe" name="remember-me" checked>
+					<label class="form-check-label" for="rememberMe">로그인 유지</label>
+
+				</div>
+				<div class="footerbutton">
+					<input class="loginButton" type="button" value="로그인" onclick="actionLoginCheck()">
+				</div>
+			</div>
+
+
+		</form>
+	</div>
+</div>
+<script th:inline="javascript">
+$(document).ready(function() {
+if([[${error}]]== 'true'){
+	Swal.fire({
+		icon: 'error',
+		title: '',
+		text: [[${exception}]],
+	})
+	$("#loginButton").trigger("click");
+}else if([[${error}]]== 'false' && [[${exception}]] == 'login'){
+	$("#loginButton").trigger("click");
+	Swal.fire({
+		icon: 'error',
+		title: '',
+		text: "로그인이 필요합니다.",
+	})
+}else if([[${error}]]== 'false' && [[${exception}]] == 'logout'){
+	Swal.fire({
+		icon: 'error',
+		title: '',
+		text: "로그아웃 되었습니다.",
+	})
+}
+});
+
+
+$("#rememberMe").click(function () {
+    if ($("input:checkbox[id='rememberMe']").is(":checked")) {
+        Cookies.set("rememberMe", true);
+    } else {
+        Cookies.set("rememberMe", false);
+    }
+    alert("rememberMe")
+})
+if (Cookies.get("rememberMe") === 'true') {
+    $("input:checkbox[id='rememberMe']").prop("checked", true);
+}
+</script>
+</html>

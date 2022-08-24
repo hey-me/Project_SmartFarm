@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="main">
+	<div class="inner">
+
+		<!-- 슬라이드쇼 컨테이너 -->
+		<script th:inline="javascript">
+		</script>
+		<div class="slideshow-container">
+			
+			<!-- 숫자와 캡션이 있는 이미지 -->
+			<div class="mySlides zoom">
+				<div class="numbertext">1 / 3</div>
+				<img src="images/greenTo1.png" style="width: 50%">
+				<div class="text">첫 번째 사진</div>
+			</div>
+
+			<div class="mySlides zoom">
+				<div class="numbertext">2 / 3</div>
+				<img src="images/dumbell.jpg" style="width: 50%">
+				<div class="text">두 번째 사진</div>
+			</div>
+
+			<div class="mySlides zoom">
+				<div class="numbertext">3 / 3</div>
+				<img src="images/12.png" style="width: 50%">
+				<div class="text">세 번째 사진</div>
+			</div>
+
+			<!-- 다음, 이전 이미지 버튼 -->
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		</div>
+		<br>
+
+		<!-- 현재 이미지를 알려주는 하단의 점 -->
+		<div style="text-align: center">
+			<span class="dot" onclick="currentSlide(1)"></span> <span class="dot" onclick="currentSlide(2)"></span> <span class="dot" onclick="currentSlide(3)"></span>
+		</div>
+
+
+
+	</div>
+</div>
+
+</html>
+		<script src="js/slideShow.js"></script>

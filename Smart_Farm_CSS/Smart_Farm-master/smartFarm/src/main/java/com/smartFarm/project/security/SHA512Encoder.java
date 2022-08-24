@@ -1,0 +1,66 @@
+package com.smartFarm.project.security;
+
+import java.security.MessageDigest;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
+public class SHA512Encoder implements PasswordEncoder {
+
+    @Override
+    public String encode(CharSequence rawPassword) {
+        if (rawPassword == null) {
+            throw new IllegalArgumentException("rawPassword cannot be null");
+        }
+        return this.getSHA512Pw(rawPassword);
+    }
+
+    @Override
+    public boolean matches(CharSequence rawPassword, String encodedPassword) {
+    	
+    	
+        if (rawPassword == null) {
+            throw new IllegalArgumentException("rawPassword cannot be null");
+        }
+        if (encodedPassword == null || encodedPassword.length() == 0) {
+            log.warn("Empty encoded password");
+            return false;
+        }
+
+        String encodedRawPw = this.getSHA512Pw(rawPassword);
+        encodedRawPw=encodedRawPw.toUpperCase();
+        log.info(encodedRawPw);
+    	log.info(encodedPassword);
+        if (encodedPassword.length() != encodedRawPw.length()) {
+            return false;
+        }
+        for (int i = 0; i < encodedPassword.length(); i++) {
+            if (encodedPassword.charAt(i) != encodedRawPw.charAt(i))
+                return false;
+        }
+        return true;
+    }
+
+    private String getSHA512Pw(CharSequence rawPassword) {
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("SHA-512");
+            md.update(rawPassword.toString().getBytes());
+        } catch (Exception e) {
+        	log.warn(e.getMessage());
+        }
+
+        byte[] msgb = md.digest();
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < msgb.length; i++) {
+            String tmp = Integer.toHexString(msgb[i] & 0xFF);
+            while (tmp.length() < 2)
+                tmp = "0" + tmp;
+            sb.append(tmp.substring(tmp.length() - 2));
+        }
+        return sb.toString();
+    }
+}

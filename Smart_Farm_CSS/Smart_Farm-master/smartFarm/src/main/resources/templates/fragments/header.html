@@ -1,0 +1,76 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript">
+	$(function() {
+		$(".loginButton").click(function() {
+			$(".modal").fadeIn();
+		});
+
+		$(".close").click(function() {
+			$(".modal").fadeOut();
+		});
+
+	});
+	$('input[type="checkbox"]').bind('click',function() {
+	    $('input[type="checkbox"]').not(this).prop("checked", false);
+	  });
+</script>
+
+<header th:fragment="fragment-header" id="header">
+
+	<div class="inner">
+		<button type="button" class="loginButton" id="loginButton" data-toggle="modal"></button>
+		<!-- Modal -->
+		<div th:replace="/fragments/modal.html"></div>
+		<!-- Logo -->
+
+		<a th:href="@{home}" class="logo">
+			<span class="symbol"><img src="images/logo_white.svg" alt="" /></span><span class="title">Greentopia</span>
+		</a>
+
+		<!-- Nav -->
+		<nav>
+			<ul>
+				<li><a href="#menu">Menu</a></li>
+			</ul>
+		</nav>
+
+	</div>
+
+</header>
+
+</html>
+
+
+<!-- 전 모달 망한것같음.. -->
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" id="loginbox" role="document">
+				<div class="modal-content">
+					<div class="tiles">
+						<div class="login">
+							<span class="symbol"> <img src="images/12.png" alt="뭠마" />
+							</span>
+
+							이 부분 수정 
+							<div class="loginid">
+								<h4>ID</h4>
+								<input type="email" name="" id="" placeholder="ID">
+							</div>
+							<div class="loginpw_pw">
+								<h4>Password</h4>
+								<input type="password" name="" id="" placeholder="Password">
+							</div>
+							<div class="login_etc">
+								<input type="radio" name="idcon" value="1" checked="checked" />
+								<label for="idcon">아이디 유지</label>
+								<input type="radio" name="idcon" value="2" />
+								<label for="idcon">로그인 유지</label>
+							</div>
+							<div>
+								<input type="submit" value="login" />
+							</div>
+							여기까지 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
